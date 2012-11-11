@@ -3,18 +3,6 @@ apply plugin: 'maven'
 
 version = '1.0-SNAPSHOT'
 
-ext {
-    artifact = 'tools'
-}
-
-configure(install.repositories.mavenInstaller) {
-    pom.project {
-        version version
-        artifactId artifact
-        groupId group
-    }
-}
-
 uploadArchives {
     repositories {
         mavenDeployer {
