@@ -1,0 +1,6 @@
+Kompilieren: gradle compileJava
+Jar bauen: gradle jar
+Maven-Deploy ins lokale Maven-Archiv: gradle install
+Maven-Deploy nach mvnrepo (zum Checkin und Push, vorher Update machen oder die alten Deploys aus dem mvnrepo leeren!): gradle uploadArchives
+
+Maven-Repo-URL als Dependency (noch ungetestet): https://raw.github.com/teilecafe/main/master/mvnrepo
