@@ -1,0 +1,2 @@
+# Batchdatei hat immer Windows line endings
+gradlew.bat text eol=crlf
