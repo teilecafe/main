@@ -12,13 +12,14 @@ Maven-Deploy ins lokale Maven-Archiv
 
 Maven-Deploy nach mvnrepo
 -------------------------
-zum Checkin und Push, vorher Update machen oder die alten Deploys aus dem mvnrepo leeren!
+Zum Checkin und Push, vorher Update machen oder die alten Deploys aus dem mvnrepo leeren!
 
     gradlew uploadArchives
-
-Gradle muss auf dem lokalen System nicht installiert sein. Über den Gradle-Wrapper wird die im Git-Repo eingecheckte Gradle-installation benutzt.
--------------------------------------------------------------------------------------------------------------------------------------------------
 
 Maven-Repo-URL als Dependency
 -----------------------------
     https://raw.github.com/teilecafe/main/master/mvnrepo
+
+Gradle muss auf dem lokalen System nicht installiert sein. Über den Gradle-Wrapper wird die im Git-Repo eingecheckte Gradle-installation benutzt.
+
+
