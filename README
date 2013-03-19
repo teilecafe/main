@@ -1,14 +1,24 @@
-### Kompilieren
+Kompilieren
+-----------
     gradlew compileJava
-### Jar bauen
+
+Jar bauen
+---------
     gradlew jar
-### Maven-Deploy ins lokale Maven-Archiv
+
+Maven-Deploy ins lokale Maven-Archiv
+------------------------------------
     gradlew install
-### Maven-Deploy nach mvnrepo
+
+Maven-Deploy nach mvnrepo
+-------------------------
 zum Checkin und Push, vorher Update machen oder die alten Deploys aus dem mvnrepo leeren!
+
     gradlew uploadArchives
 
 Gradle muss auf dem lokalen System nicht installiert sein. Über den Gradle-Wrapper wird die im Git-Repo eingecheckte Gradle-installation benutzt.
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Maven-Repo-URL als Dependency
+Maven-Repo-URL als Dependency
+-----------------------------
     https://raw.github.com/teilecafe/main/master/mvnrepo
