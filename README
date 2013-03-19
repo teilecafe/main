@@ -20,6 +20,7 @@ Maven-Repo-URL als Dependency
 -----------------------------
     https://raw.github.com/teilecafe/main/master/mvnrepo
 
-Gradle muss auf dem lokalen System nicht installiert sein. Über den Gradle-Wrapper wird die im Git-Repo eingecheckte Gradle-installation benutzt.
+Gradle muss auf dem lokalen System nicht installiert sein. Über den Gradle-Wrapper wird
+die im Git-Repo eingecheckte Gradle-installation benutzt.
 
 
