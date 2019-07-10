@@ -15,6 +15,7 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 
 /**
  * Funktionen die irgendwie ständig gebraucht werden, aber Java leider fehlen.
@@ -482,6 +483,30 @@ public class Objects {
             t = collection.iterator().next();
         }
         return t;
+    }
+
+    /**
+     * Java-Interpretation einer Oracle-Methode zum einfachen NullValue ersetzen.
+     *
+     * @param value Zu prüfender Wert.
+     * @param valueIfNull Rückgabe, wenn der zu prüfende Wert <code>null</code> ist.
+     * @param <T> Typ der Werte.
+     * @return Der Wert, wenn er nicht null war, sonst der Ersatzwert.
+     */
+    public static <T> T nvl(final T value, final T valueIfNull) {
+        return value == null ? valueIfNull : value;
+    }
+
+    /**
+     * Java-Interpretation einer Oracle-Methode zum einfachen NullValue ersetzen.
+     *
+     * @param value Zu prüfender Wert.
+     * @param supplier Berechnung des Rückgabewertes, wenn der zu prüfende Wert <code>null</code> ist.
+     * @param <T> Typ der Werte.
+     * @return Der Wert, wenn er nicht null war, sonst der Ersatzwert.
+     */
+    public static <T> T nvl(final T value, final Supplier<T> supplier) {
+        return value == null ? supplier.get() : value;
     }
 
     /**

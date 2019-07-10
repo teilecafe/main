@@ -19,7 +19,7 @@ import java.util.Map;
  *
  * @author Bob Tehl
  */
-@SuppressWarnings("UnusedDeclaration")
+@SuppressWarnings({"UnusedDeclaration", "WeakerAccess", "TryWithIdenticalCatches"})
 public final class Methods {
     // Methoden-Cache, der das Suchen von Methoden beschleunigt.
     private static final ThreadLocal<Map<Object, Method>> METHOD_CACHE =
@@ -73,11 +73,7 @@ public final class Methods {
         Objects.checkParam(methodName, "methodName");
         Objects.checkParam(object, "object");
 
-        try {
-            return execute(object.getClass().getMethod(methodName), object, NO_ARGS);
-        } catch (NoSuchMethodException e) {
-            throw new NoSuchMethodFoundException(methodName, object);
-        }
+        return execute(isEqual(methodName), object, NO_ARGS);
     }
 
     /**
@@ -256,11 +252,7 @@ public final class Methods {
         Objects.checkParam(methodName, "methodName");
         Objects.checkParam(object, "object");
 
-        try {
-            return execute(object.getClass().getMethod(methodName), object, NO_ARGS);
-        } catch (NoSuchMethodException e) {
-            return null;
-        }
+        return executeIfPresent(isEqual(methodName), object, NO_ARGS);
     }
 
     /**
@@ -346,11 +338,7 @@ public final class Methods {
         Objects.checkParam(methodName, "methodName");
         Objects.checkParam(object, "object");
 
-        try {
-            return object.getClass().getMethod(methodName);
-        } catch (NoSuchMethodException e) {
-            return null;
-        }
+        return find(isEqual(methodName), object);
     }
 
     /**
@@ -560,7 +548,7 @@ public final class Methods {
         Objects.checkParam(predicate, "predicate");
 
         // Methoden suchen
-        Collection<Method> result = new ArrayList<Method>();
+        final Collection<Method> result = new ArrayList<Method>();
         Method[] methods = this.clazz.getMethods();
         for (Method method : methods) {
             if (this.predicate.matches(method)) {
