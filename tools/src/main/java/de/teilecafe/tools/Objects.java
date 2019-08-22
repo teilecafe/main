@@ -486,6 +486,16 @@ public class Objects {
     }
 
     /**
+     * Hilfsfunktion, die aus allen Werten Strings macht und aus leeren Strings null.
+     * Nebenbei wird der String noch getrimmt und doppelte Leerzeichen zu einem gemacht.
+     */
+    public static String emptyAsNull(final Object value) {
+        if (value == null) return null;
+        final String s = String.valueOf(value).replaceAll("[\\s]+", " ").trim();
+        return s.isEmpty() ? null : s;
+    }
+
+    /**
      * Java-Interpretation einer Oracle-Methode zum einfachen NullValue ersetzen.
      *
      * @param value Zu prüfender Wert.

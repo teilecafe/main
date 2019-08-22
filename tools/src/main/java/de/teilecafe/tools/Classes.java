@@ -573,5 +573,5 @@ public class Classes
     /**
      * Interface für einen InvocationHandler, der Serialisiert werden kann.
      */
-    public static interface SerializableInvocationHandler extends InvocationHandler, Serializable {}
+    public interface SerializableInvocationHandler extends InvocationHandler, Serializable {}
 }
