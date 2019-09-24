@@ -12,6 +12,7 @@ import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -418,6 +419,7 @@ public class Classes
         }
 
         final List<Class> classesA = new ArrayList<Class>();
+        classesA.add(classA);
 
         for (Class clazz : getSuperClasses(classA))
         {
@@ -427,7 +429,11 @@ public class Classes
             }
         }
 
-        classesA.retainAll(asSet(getSuperClasses(classB)));
+        final Set<Class> classesB = new HashSet<>();
+        classesB.add(classB);
+        classesB.addAll(asSet(getSuperClasses(classB)));
+
+        classesA.retainAll(classesB);
         final Class first = Objects.first(classesA);
         return first == null ? Object.class : first;
     }
@@ -460,11 +466,13 @@ public class Classes
         final Class superClass = clazz.getSuperclass();
         if (superClass != null)
         {
+            result.add(superClass);
             result.addAll(Objects.asList(getSuperClasses(superClass)));
         }
 
         // Eindeutigkeit herstellen
         final Set<Class> unique = new LinkedHashSet<Class>(result);
+        unique.remove(clazz);
         return unique.toArray(new Class[unique.size()]);
     }
 
